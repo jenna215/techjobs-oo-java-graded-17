@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Job {
 
     private int id;
-    private static int nextId = 1;
+    static int nextId = 1;
 
     private String name;
     private Employer employer;
@@ -28,6 +28,10 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+    }
+
+    public static int nextId() {
+        return nextId;
     }
 
 
