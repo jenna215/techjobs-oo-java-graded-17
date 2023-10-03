@@ -56,5 +56,64 @@ public class JobTest {
         assertFalse(job1.equals(job2));
 
     }
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        String lineSeparator = System.lineSeparator();
+
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
+        String string = job1.toString();
+
+        assertEquals(lineSeparator, string.substring(0, lineSeparator.length()));
+        assertEquals(lineSeparator, string.substring(string.length() - lineSeparator.length()));
+
+//        assertEquals(lineSeparator + "ID: " + job1.getId() + lineSeparator, "ID: " + job1.getId());
+//        assertEquals(lineSeparator + "Name: " + job1.getName() + lineSeparator, "Name: " + job1.getName());
+//        assertEquals(lineSeparator + "Employer: " + job1.getEmployer().getValue() + lineSeparator, "Employer: " + job1.getEmployer().getValue());
+//        assertEquals(lineSeparator + "Location: " + job1.getLocation().getValue() + lineSeparator, "Location: " + job1.getLocation().getValue());
+//        assertEquals(lineSeparator + "Position Type: " + job1.getPositionType().getValue() + lineSeparator, "Position Type: " + job1.getPositionType().getValue());
+//        assertEquals(lineSeparator + "Core Competency: " + job1.getCoreCompetency().getValue() + lineSeparator, "Core Competency: " + job1.getCoreCompetency().getValue());
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+
+        Job job1 =  new Job();
+                    new Job("Product tester",
+                    new Employer("ACME"),
+                    new Location("Desert"),
+                    new PositionType("Quality control"),
+                    new CoreCompetency("Persistence"));
+
+        assertTrue(job1.equals(new Job()));
+        assertTrue(job1.getName().contains("Name: "));
+        assertTrue(job1.getEmployer().getValue().contains("Employer: "));
+        assertTrue(job1.getLocation().getValue().contains("Location: "));
+        assertTrue(job1.getPositionType().getValue().contains("Position Type: "));
+        assertTrue(job1.getCoreCompetency().getValue().contains("Core Competency: "));
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        String lineSeparator = System.lineSeparator();
+        Job job1 =  new Job("",
+                new Employer("ACME"),
+                new Location(null),
+                new PositionType("Quality Control"),
+                new CoreCompetency("Persistence"));
+        String expected = lineSeparator + "ID: " + job1.getId() + lineSeparator +
+                "Name: Data not available" + lineSeparator +
+                "Employer: " + "ACME" + lineSeparator +
+                "Location: Data not available" + lineSeparator +
+                "Position Type: " + "Quality Control" + lineSeparator +
+                "Core Competency: " + "Persistence" + lineSeparator;
+        String actual = job1.toString();
+
+        assertEquals(expected, actual);
+    }
 
 }

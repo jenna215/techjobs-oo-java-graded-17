@@ -21,7 +21,7 @@ public class Job {
         this.id = nextId++;
     }
 
-    public Job (String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
         this.name = name;
         this.employer = employer;
@@ -32,6 +32,33 @@ public class Job {
 
     public static int nextId() {
         return nextId;
+    }
+
+    public String toString() {
+        if (name == null || name.isEmpty()) {
+            name = "Data not available";
+        }
+        if (employer.getValue() == null || employer.getValue().isEmpty()) {
+            employer.setValue("Data not available");
+        }
+        if (location.getValue() == null || location.getValue().isEmpty()) {
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue() == null || positionType.getValue().isEmpty()) {
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty()) {
+            coreCompetency.setValue("Data not available");
+        }
+        String lineSeparator = System.lineSeparator();
+
+        return lineSeparator +
+               "ID: " + id + lineSeparator +
+               "Name: " + name + lineSeparator +
+               "Employer: " + employer + lineSeparator +
+               "Location: " + location + lineSeparator +
+               "Position Type: " + positionType + lineSeparator +
+               "Core Competency: " + coreCompetency + lineSeparator;
     }
 
 
