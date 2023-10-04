@@ -70,13 +70,6 @@ public class JobTest {
 
         assertEquals(lineSeparator, string.substring(0, lineSeparator.length()));
         assertEquals(lineSeparator, string.substring(string.length() - lineSeparator.length()));
-
-//        assertEquals(lineSeparator + "ID: " + job1.getId() + lineSeparator, "ID: " + job1.getId());
-//        assertEquals(lineSeparator + "Name: " + job1.getName() + lineSeparator, "Name: " + job1.getName());
-//        assertEquals(lineSeparator + "Employer: " + job1.getEmployer().getValue() + lineSeparator, "Employer: " + job1.getEmployer().getValue());
-//        assertEquals(lineSeparator + "Location: " + job1.getLocation().getValue() + lineSeparator, "Location: " + job1.getLocation().getValue());
-//        assertEquals(lineSeparator + "Position Type: " + job1.getPositionType().getValue() + lineSeparator, "Position Type: " + job1.getPositionType().getValue());
-//        assertEquals(lineSeparator + "Core Competency: " + job1.getCoreCompetency().getValue() + lineSeparator, "Core Competency: " + job1.getCoreCompetency().getValue());
     }
 
     @Test
@@ -89,7 +82,7 @@ public class JobTest {
                     new PositionType("Quality control"),
                     new CoreCompetency("Persistence"));
 
-        assertTrue(job1.equals(new Job()));
+        assertTrue(job1.equals(job1.getId()));
         assertTrue(job1.getName().contains("Name: "));
         assertTrue(job1.getEmployer().getValue().contains("Employer: "));
         assertTrue(job1.getLocation().getValue().contains("Location: "));
