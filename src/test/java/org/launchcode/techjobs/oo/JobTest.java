@@ -75,19 +75,31 @@ public class JobTest {
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
 
-        Job job1 =  new Job();
+        Job job1 =
                     new Job("Product tester",
                     new Employer("ACME"),
                     new Location("Desert"),
                     new PositionType("Quality control"),
                     new CoreCompetency("Persistence"));
 
-        assertTrue(job1.equals(job1.getId()));
-        assertTrue(job1.getName().contains("Name: "));
-        assertTrue(job1.getEmployer().getValue().contains("Employer: "));
-        assertTrue(job1.getLocation().getValue().contains("Location: "));
-        assertTrue(job1.getPositionType().getValue().contains("Position Type: "));
-        assertTrue(job1.getCoreCompetency().getValue().contains("Core Competency: "));
+        String lineSeparator = System.lineSeparator();
+
+        String expected = lineSeparator +
+                            "ID: " + job1.getId() + lineSeparator +
+                            "Name: Product tester" + lineSeparator +
+                            "Employer: ACME" + lineSeparator +
+                            "Location: Desert" + lineSeparator +
+                            "Position Type: Quality control" + lineSeparator +
+                            "Core Competency: Persistence" + lineSeparator;
+
+        assertEquals(expected, job1.toString());
+
+//        assertTrue(job1.equals(job1.getId()));
+//        assertTrue(job1.getName().contains("Name: "));
+//        assertTrue(job1.getEmployer().getValue().contains("Employer: "));
+//        assertTrue(job1.getLocation().getValue().contains("Location: "));
+//        assertTrue(job1.getPositionType().getValue().contains("Position Type: "));
+//        assertTrue(job1.getCoreCompetency().getValue().contains("Core Competency: "));
     }
 
     @Test
